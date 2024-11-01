@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Gaegu&display=swap');
+
+/*base*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Gaegu", sans-serif;
+}
+/*body*/
+body{
+    background-color: #b0b58a;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 20px;
+}
+
+/*form*/
+
+.form-container{
+    display: flex;
+    width: 1000px;
+    height: 600px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+/*first column*/
+
+/*second column*/
