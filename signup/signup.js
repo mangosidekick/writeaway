@@ -3,6 +3,23 @@ const registerBtn = document.querySelector("#register");
 const loginForm = document.querySelector(".login-form");
 const registerForm = document.querySelector(".register-form");
 
+const eyeBtn = document.querySelector(".fa-eye");
+const inputField = document.querySelector(".password-field");
+
+eyeBtn.addEventListener("click", () => {
+    if (inputField.type === "password"){
+        inputField.type = "text";
+        eyeBtn.classList.replace("fa-eye", "fa-eye-slash");
+        console.log(eyeBtn);
+    }else{
+        inputField.type = "password";
+        eyeBtn.classList.replace("fa-eye-slash", "fa-eye");
+    }
+});
+
+
+
+
 loginBtn.addEventListener('click', () => {
     loginBtn.style.backgroundColor = "#9ead79";
     registerBtn.style.backgroundColor = "rgba(0, 0, 0, 0)";

@@ -78,6 +78,10 @@ body{
     color: #2a3828;
 }
 
+.fa-eye{
+    cursor: pointer;
+}
+
 /*login form*/
 
 .login-form{
