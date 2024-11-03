@@ -3,22 +3,35 @@ const registerBtn = document.querySelector("#register");
 const loginForm = document.querySelector(".login-form");
 const registerForm = document.querySelector(".register-form");
 
-const eyeBtn = document.querySelector(".fa-eye");
-const inputField = document.querySelector(".password-field");
+const loginEyeBtn = document.querySelector(".login-icon");
+const loginInputField = document.querySelector(".login-password-field");
 
-eyeBtn.addEventListener("click", () => {
-    if (inputField.type === "password"){
-        inputField.type = "text";
-        eyeBtn.classList.replace("fa-eye", "fa-eye-slash");
-        console.log(eyeBtn);
+const registerEyeBtn = document.querySelector(".register-icon");
+const registerInputField = document.querySelector(".register-password-field");
+
+//login password visibility
+loginEyeBtn.addEventListener("click", () => {
+    if (loginInputField.type === "password"){
+        loginInputField.type = "text";
+        loginEyeBtn.classList.replace("fa-eye", "fa-eye-slash");
+        console.log(loginEyeBtn);
     }else{
-        inputField.type = "password";
-        eyeBtn.classList.replace("fa-eye-slash", "fa-eye");
+        loginInputField.type = "password";
+        loginEyeBtn.classList.replace("fa-eye-slash", "fa-eye");
     }
 });
 
-
-
+//register password visibility
+registerEyeBtn.addEventListener("click", () => {
+    if (registerInputField.type === "password"){
+        registerInputField.type = "text";
+        registerEyeBtn.classList.replace("fa-eye", "fa-eye-slash");
+        console.log(registerEyeBtn);
+    }else{
+        registerInputField.type = "password";
+        registerEyeBtn.classList.replace("fa-eye-slash", "fa-eye");
+    }
+});
 
 loginBtn.addEventListener('click', () => {
     loginBtn.style.backgroundColor = "#9ead79";
