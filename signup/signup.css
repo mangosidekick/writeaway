@@ -123,6 +123,9 @@ body{
 .login-input-box{
     position: relative;
 }
+.login-input-box a{
+    text-decoration: none;
+}
 
 ::placeholder{
     color: #6B705C;
@@ -175,6 +178,9 @@ body{
 }
 .login-input-submit:hover{
     gap: 15px
+}
+.login-input-submit a{
+    text-decoration: none;
 }
 
 /*register form*/
@@ -246,6 +252,9 @@ body{
     right: 15px;
     transform: translate(-40%);
     color: black;
+}
+.register-input-box a{
+    text-decoration: none;
 }
 
 .register-input-submit{
