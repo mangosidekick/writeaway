@@ -7,11 +7,102 @@
     box-sizing: border-box;
     font-family: "Gaegu", sans-serif;
 }
-/*body*/
-body{
-    background-color: #b0b58a;
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.paper {
+    width: 70%;
+    max-width: 800px;
+    height: 80%;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 40px;
+    position: relative;
+    font-family: "Gaegu", sans-serif;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Concert One', cursive;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #3e3e3e;
+}
+
+textarea {
+    width: 90%;
+    height: 60%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: 'Gaegu', sans-serif;
+    font-size: 1.2em;
+    color: #333;
+    background-color: #fafafa;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
+    resize: none;
+    line-height: 1.6;
+    z-index: 1;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #0056b3;
+}
+
+/* Controls section with color picker */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 100%;
+    padding: 0 10px;
+}
+
+input[type="color"] {
+    padding: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Save and Clear buttons */
+.clear-save-btns {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.clear-save-btns button {
+    margin-left: 10px;
 }

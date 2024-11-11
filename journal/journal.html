@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>writeaway | home</title>
+    <title>writeaway</title>
     <!--boxicons-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!--font awesome icons-->
@@ -17,8 +17,23 @@
     <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
-    <img src="https://assets.codepen.io/11589838/logo.png" class="logo">
-    
+
+    <div class="paper" id="paper">
+        <textarea id="noteText" placeholder="Start writing here..."></textarea>
+
+        <div class="controls">
+            <!-- Color Picker Input (with built-in apply functionality) -->
+            <input type="color" id="colorPicker" value="#ffffff"> <!-- Color picker triggers apply action directly -->
+        </div>
+
+        <div class="clear-save-btns">
+            <button id="clearButton">Clear</button>
+            <button id="saveButton">Save</button>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+    </div>
+
     <script src="journal.js"></script>
+
+
 </body>
 </html>
