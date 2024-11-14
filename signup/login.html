@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>writeaway | login & register</title>
+    <title>writeaway | login</title>
     <!--boxicons-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!--font awesome icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <!--style-->
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="style.css">
     <!--favicon (header icon)-->
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
@@ -26,46 +26,37 @@
         </div>
 
         <div class="col col-2">
+            <div class="register-form">
+                    <!--title-->
+                    <div class="register-form-title">
+                        <span>sign in</span>
+                    </div>
 
-            <!--login form container-->
-            <div class="login-form">
-                <div class="login-form-title">
-                    <span>sign in</span>
-                </div>
-                <div class="login-form-inputs">
-                    <div class="login-input-box">
-                        <input type="text" class="login-input-field" placeholder="email" required>
-                        <i class="bx bx-user icon"></i>
+                    <p id="error-message"></p>
+                    
+                    <!--actual form-->
+                <form id="form">
+                    <!--email-->
+                    <div>
+                        <input type="email" name="email" id="email-input" placeholder="email">
+                        <i class="bx bx-envelope register-icon"></i>
                     </div>
-                    <div class="login-input-box">
-                        <input type="password" class="login-input-field login-password-field" placeholder="password" required>
-                        <i class="fa-regular fa-eye login-icon"></i>
+                    <!--password-->
+                    <div>
+                        <input type="password" name="password" class="password" id="password-input" placeholder="password">
+                        <i class="fa-regular fa-eye register-icon password-icon"></i>
                     </div>
-                    <div class="forgot-pass">
-                        <a href="../forgot password/forgotpassword.html">forgot password?</a>
-                    </div>
-                    <div class="login-input-box">
-                        <a href="../home/home.html">
-                        <button class="login-input-submit">
-                            <span>sign in</span>
-                            <i class="bx bx-right-arrow-alt"></i>
-                        </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="btn-box">
-                    <a href="./signup.html">
-                    <button class="btn btn-1" id="to-signup">new to writeaway? sign up here!</button>
-                    </a>
-                </div>
-            </div>    
-            
+                    <button type="submit">sign in<i class="bx bx-right-arrow-alt"></i></button>
+                </form>
+
+                <p>new to writeaway? <a href="./signup.html">sign up here!</a></p>
+            </div>
         </div>
         
-        
     </div>
-    
 
     <script src="login.js"></script>
+    <script src="validation.js" defer></script>
+
 </body>
 </html>

@@ -1,5 +1,5 @@
-const registerEyeBtn = document.querySelector(".register-icon");
-const registerInputField = document.querySelector(".register-password-field");
+const registerEyeBtn = document.querySelector(".password-icon");
+const registerInputField = document.querySelector(".password");
 
 //register password visibility
 registerEyeBtn.addEventListener("click", () => {

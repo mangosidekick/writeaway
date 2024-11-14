@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>writeaway | login & register</title>
+    <title>writeaway | sign up</title>
     <!--boxicons-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!--font awesome icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <!--style-->
-    <link rel="stylesheet" href="./signup.css">
+    <link rel="stylesheet" href="./style.css">
     <!--favicon (header icon)-->
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
@@ -26,45 +26,46 @@
         </div>
 
         <div class="col col-2">
+            <div class="register-form">
+                    <!--title-->
+                    <div class="register-form-title">
+                        <span>create account</span>
+                    </div>
 
-        <!--register form container-->
-        <div class="register-form">
-            <div class="register-form-title">
-                <span>create account</span>
-            </div>
-            <div class="register-form-inputs">
-                <div class="register-input-box">
-                    <input type="text" class="register-input-field" placeholder="email" required>
-                    <i class="bx bx-envelope icon"></i>
-                </div>
-                <div class="register-input-box">
-                    <input type="password" class="register-input-field register-password-field" placeholder="password" required>
-                    <i class="fa-regular fa-eye register-icon"></i>
-                </div>
-                <div class="register-input-box">
-                    <a href="../home/home.html">
-                    <button class="register-input-submit">
-                        <span>sign up</span>
-                        <i class="bx bx-right-arrow-alt"></i>
-                    </button>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="btn-box">
-                <a href="./login.html">
-                <button class="btn btn-2" id="to-login">got an account? log in here!</button>
-                </a>
-            </div>
+                    <p id="error-message"></p>
+                    
+                    <!--actual form-->
+                <form id="form">
+                    <!--name-->
+                    <div>
+                        <input type="text" name="firstname" id="firstname-input" placeholder="name">
+                        <i class="bx bx-child register-icon"></i>
+                    </div>
+                    <!--email-->
+                    <div>
+                        <input type="email" name="email" id="email-input" placeholder="email">
+                        <i class="bx bx-envelope register-icon"></i>
+                    </div>
+                    <!--password-->
+                    <div>
+                        <input type="password" name="password" class="password" id="password-input" placeholder="password">
+                        <i class="fa-regular fa-eye register-icon password-icon"></i>
+                    </div>
+                     <!--repeat password-->
+                     <div>
+                        <input type="password" name="repeat-password" class="repeat-password" id="repeat-password-input"  placeholder="repeat password">
+                        <i class="fa-regular fa-eye register-icon forget-password-icon"></i>
+                    </div>
+                    <button type="submit">sign up <i class="bx bx-right-arrow-alt"></i></button>
+                </form>
 
+                <p>already have an account? <a href="./login.html">sign in here!</a></p>
+            </div>
         </div>
-            
-        </div>
-        
         
     </div>
     
-
     <script src="signup.js"></script>
+    <script src="validation.js" defer></script>
 </body>
 </html>
