@@ -180,9 +180,17 @@ form button:focus{
     text-decoration: none;
     color: var(--black);
   }
+
   a:hover{
     color: var(--green);
     text-decoration: underline;
+  }
+
+  .button{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
   }
 
 /*responsive*/
