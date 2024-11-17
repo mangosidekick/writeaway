@@ -8,14 +8,17 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!--font awesome icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <!--icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
     <!--style-->
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <!-- Ereka -->
     <header class="header">
       <div class="menu-icon">☰</div>
-      <h1>My folder</h1>
+      <h1></h1>
       <input type="text" id="search-bar" placeholder="Search notebooks..."> 
     </header>
   
@@ -24,12 +27,11 @@
         <div class="sort-dropdown">
           <button id="sortDropdownButton">Name</button>
           <div class="dropdown-content" id="sortDropdownContent">
-            <a href="#">Manual</a>
-            <a href="#">Name</a>
-            <a href="#">Date created</a>
-            <a href="#">Date modified</a>
-            <a href="#">From A to Z</a>
-            <a href="#">From Z to A</a>
+            <a href="#" data-sort-by="manual">Manual</a>
+            <a href="#" data-sort-by="date-created">Date created</a>
+            <a href="#" data-sort-by="date-modified">Date modified</a>
+            <a href="#" data-sort-by="a-to-z">From A to Z</a>
+            <a href="#" data-sort-by="z-to-a">From Z to A</a>
           </div>
         </div>
       </div>
@@ -46,56 +48,31 @@
       <h2>New notebook</h2>
       <label for="notebook-name">Notebook name</label>
       <input type="text" id="notebook-name" placeholder="Enter notebook name">
-      <label for="size">Size</label>
-      <select id="size">
-        <option value="A4">A4</option>
-        <option value="Letter">Letter</option>
-        </select>
-      <label for="orientation">Orientation</label>
-      <select id="orientation">
-        <option value="Portrait">Portrait</option>
-        <option value="Landscape">Landscape</option>
-        </select>
-        <!-- change the colors or add more if gusto -->
       <label>Cover color</label>
       <div class="color-options">
-        <div class="selected" style="background-color: #4f8d7a;"></div> <div style="background-color: #f0f0f0;"></div>
-        <div style="background-color: #581111;"></div> 
-        <div style="background-color: #3e0662;"></div>
-        <div style="background-color: #225c0c;"></div>
-        <div style="background-color: #fb7676;"></div>
-        <div style="background-color: #fdef2c;"></div>
-        <div style="background-color: #050555;"></div>
-        <div style="background-color: #740808;"></div>
-        <div style="background-color: #74b723;"></div>
+        <div class="selected" style="background-color: #ebebeb;"></div> <div style="background-color: #f0f0f0;"></div>
+        <div style="background-color: #090c0f;"></div> 
+        <div style="background-color: #ba3a42;"></div>
+        <div style="background-color: #ba6b3a;"></div>
+        <div style="background-color: #c9bd38;"></div>
+        <div style="background-color: #6da14a;"></div>
+        <div style="background-color: #4aa178;"></div>
+        <div style="background-color: #416191;"></div>
+        <div style="background-color: #f792ad;"></div>
       </div>
-      <label>Page pattern</label>
-      <div class="pattern-options">
-        <div class="selected"></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <label for="language">Language</label>
-      <select id="language">
-        <option value="English (Philippines)">English (Philippines)</option>
-        <option value="Other">Other</option>
-        </select>
       <div class="buttons">
         <button class="cancel">Cancel</button>
         <button class="create">Create</button>
       </div>
     </div>
 
-    <div class="notebook-preview">
-      <div class="notebook-cover" style="background-color: #fff; background-image: linear-gradient(to right, #4f8d7a, #74b723);"></div>
-    </div>
-
     <div class="notebook-container"> 
       <div class="notebook"> 
         <div class="notebook-content">
         </div>
-        <div class="notebook-bookmark"></div>
+        <button class="delete-notebook" title="Delete Notebook">
+          <i class="fas fa-trash"></i>
+        </button>
       </div>
       <div class="notebook-info">
         <h2></h2>
@@ -103,5 +80,5 @@
       </div>
     </div> 
     <script src="home.js"></script>
-  </body>
-  </html>
+</body>
+</html>
