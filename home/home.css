@@ -20,6 +20,7 @@ body {
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem;
   background-color: var(--green); /* Use the new darker olive color */
 }
@@ -29,7 +30,7 @@ body {
   text-align: center;
   color: var(--white); /* Changed text color */
 }
- 
+
 .header .menu-icon,
 .header .search-icon,
 .header .more-icon {
@@ -73,10 +74,12 @@ body {
 
 .view-options button {
   background-color: var(--grey); /* Changed background color */
+  color: var(--black); /* Changed text color */
 }
 
 .sort-dropdown button {
   background-color: var(--olive); /* Changed background color */
+  color: var(--white); /* Changed text color */
 }
 
 .new-notebook-modal .buttons button.cancel {
@@ -85,7 +88,7 @@ body {
 }
 
 .new-notebook-modal .buttons button.create {
-  background-color: var(--); /* Changed background color */
+  background-color: var(--green); 
   color: var(--white); /* Changed text color */
 }
 
@@ -118,7 +121,6 @@ body {
   margin: 10px;
 }
 
-
 .notebook-info h2 {
   margin: 0;
   color: var(--black); /* Changed text color */
@@ -136,6 +138,7 @@ body {
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 20px;
+  margin-left: 20px; /* Added left margin */
 }
 
 /* Add Note Button Styles */
@@ -145,7 +148,7 @@ body {
   right: 20px;
   width: 60px;
   height: 60px;
-  background-color: var(--black); /* Changed background color */
+  background-color: var(--green); /* Changed background color */
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -157,8 +160,8 @@ body {
   padding: 0.4rem 0.6rem;
   border: none;
   border-radius: 50%;
-  background-color: #072508;
-  color: white;
+  background-color: var(--green); /* Changed background color */
+  color: var(--white); /* Changed text color */
   font-size: 1rem;
   cursor: pointer;
 }
@@ -202,7 +205,7 @@ body {
   background-color: transparent;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0px 0px 10px rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   z-index: 100;
   width: 200px;
 }
@@ -233,10 +236,11 @@ body {
 
 .add-content button:last-child:hover {
   background-color: var(--olive); /* Changed background color */
+  font-size: 24px;
 }
 
 .add-note-button.active {
-  background-color: var(--black); /* Changed background color */
+  background-color: var(--green); /* Changed background color */
   color: var(--white); /* Changed text color */
   font-size: 24px;
 }
@@ -245,7 +249,7 @@ body {
   content: "X";
 }
 
-/* New Notebook Modal Styles */
+/* New Notebook button content Styles */
 .new-notebook-modal {
   display: none;
   position: fixed;
@@ -378,7 +382,7 @@ body {
   right: 20px;
   width: 60px;
   height: 60px;
-  background-color: var(--black); /* Changed background color */
+  background-color: var(--green); /* Changed background color */
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -390,14 +394,14 @@ body {
   padding: 0.4rem 0.6rem;
   border: none;
   border-radius: 50%;
-  background-color: var(--black); /* Changed background color */
+  background-color: rgb(44, 82, 44); /* Changed background color */
   color: var(--white); /* Changed text color */
   font-size: 1rem;
   cursor: pointer;
 }
 
 .add-note-button.active {
-  background-color: var(--black); /* Changed background color */
+  background-color: rgb(44, 82, 44); /* Changed background color */
   color: var(--white); /* Changed text color */
   font-size: 24px;
 }
@@ -450,10 +454,31 @@ body {
 .add-content button:last-child {
   background-color: var(--white); /* Changed background color */
   color: var(--black); /* Changed text color */
+  font-size: 24px;
+  font-family: gauge, san-serif;
 }
 
 /*  Make the "New notebook" button white  */
 .add-content button:first-child {
   background-color: var(--white);
   color: var(--black); 
+  font-size: 24px;
+  font-family: gauge, san-serif;
+}
+
+/*  Make the "New board" button white  */
+.add-content button:nth-child(2) {
+  background-color: var(--white);
+  color: var(--black); 
+  font-size: 24px;
+  font-family: gauge, san-serif;
+}
+
+/*  Make the "Name" button full white  */
+.header button {
+  background-color: var(--white);
+  color: var(--black);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  margin: 0.5rem;
 }
