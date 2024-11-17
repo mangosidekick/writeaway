@@ -57,9 +57,8 @@ document.getElementById('form').addEventListener('submit', function(event) {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Show success alert and redirect to login page
-                alert('Registration successful!');
-                window.location.href = '/login.html'; // Redirect to login page
+                const firstname = formData.get('firstname'); // Get the user's first name
+                window.location.href = `/confirm.html?name=${encodeURIComponent(firstname)}`; 
             } else {
                 document.getElementById('error-message').textContent = data.message;
             }

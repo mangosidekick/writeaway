@@ -29,7 +29,6 @@ document.getElementById('form').addEventListener('submit', function(event) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert('Login successful!');
             window.location.href = '/home/home.html'; // Redirect to home page
         } else {
             const errorMessage = document.getElementById('error-message');
