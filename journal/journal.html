@@ -3,37 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>writeaway</title>
-    <!--boxicons-->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <!--font awesome icons-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <!--style-->
-    <link rel="stylesheet" href="journal.css">
-    <!--favicon (header icon)-->
-    <link rel="apple-touch-icon" sizes="180x180" href="C:\Users\Client\OneDrive\Desktop\writeaway website\assets/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="C:\Users\Client\OneDrive\Desktop\writeaway website\assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="C:\Users\Client\OneDrive\Desktop\writeaway website\assets/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <title>Writeaway</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <header class="header">
+        <!-- Use an anchor tag for the arrow link -->
+        <a href="../home/home.html" class="menu-icon">←</a> <!-- Arrow now functions as a link -->
+        <h1></h1> <!-- Empty header title to just have the arrow -->
+    </header>
 
     <div class="paper" id="paper">
         <textarea id="noteText" placeholder="Start writing here..."></textarea>
 
         <div class="controls">
-            <!-- Color Picker Input (with built-in apply functionality) -->
-            <input type="color" id="colorPicker" value="#ffffff"> <!-- Color picker triggers apply action directly -->
+            <div class="color-picker-container">
+                <input type="color" id="colorPicker" value="#ffffff">
+            </div>
         </div>
 
         <div class="clear-save-btns">
             <button id="clearButton">Clear</button>
-            <button id="saveButton">Save</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+            <button id="saveButton">Save as txt</button>
+            <button id="saveProgressButton">Save Progress</button>
+        </div>
     </div>
 
-    <script src="journal.js"></script>
-
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js"></script>
 
 </body>
 </html>
