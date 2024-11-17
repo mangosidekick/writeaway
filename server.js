@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const { connection, findUserByEmail } = require('./db');
+const { connection, findUserByEmail } = require('./database');
 const app = express();
 const port = 3000;
 
@@ -44,10 +44,10 @@ app.post('/submit', (req, res) => {
 
         // Add user to database
         const newUser = { firstname, email, password };
-        const insertQuery = 'INSERT INTO writers (firstname, email, password) VALUES (?, ?, ?)';
+        const insertQuery = 'INSERT INTO signup_table (firstname, email, password) VALUES (?, ?, ?)';
         connection.query(insertQuery, [newUser.firstname, newUser.email, newUser.password], (err, results) => {
             if (err) {
-                console.error('Error inserting writer:', err.message);
+                console.error('Error inserting user:', err.message);
                 return res.status(500).json({ success: false, message: 'Internal server error' });
             }
             console.log('User registered successfully'); // Log successful registration
