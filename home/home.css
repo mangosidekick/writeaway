@@ -19,9 +19,16 @@ body {
 /* Header Styles */
 .header {
   display: flex;
+<<<<<<< HEAD
   justify-content: space-between;
   padding: 1rem;
   background-color: var(--green); /* Use the new darker olive color */
+=======
+  justify-content: space-between; /* Distribute elements evenly */
+  align-items: center; /* Vertically center elements */
+  padding: 1rem; /* Add padding to the header */
+  background-color: #b0b58a; /*  header background */
+>>>>>>> 52bf9b5b03005f9f263f0ba9f3eb6812fef1e136
 }
 
 .header h1 {
@@ -163,6 +170,7 @@ body {
   cursor: pointer;
 }
 
+<<<<<<< HEAD
 /* Sorting Dropdown Styles */
 .sort-dropdown {
   position: relative;
@@ -181,6 +189,128 @@ body {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
+=======
+  body {
+    font-family: "Gaegu", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f5f2;
+    color: #000000; 
+  }
+  
+  .content {
+    padding: 20px;
+  }
+  
+  .banner {
+    background-color: #383838; 
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .banner h2 {
+    margin-bottom: 10px;
+  }
+  
+  .banner button {
+    background-color: #7ca748; 
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .notes-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #383838; 
+  }
+  
+  .notes-list .note-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+  
+  .notes-list .note-info {
+    margin-left: 10px;
+  }
+  
+  .notes-list .note-info h3 {
+    margin: 0;
+  }
+  
+  .notes-list .note-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #808080; 
+  }
+
+  .notebook-container {
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 20px; 
+  }
+  
+  .notebook {
+    width: 150px; 
+    height: 200px; 
+    border-radius: 10px;
+    background-color: #d9c8c8; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: none; 
+    margin: 30px;
+  }
+  
+  .notebook-content {
+    padding: 20px;
+    background-color: #f0f0f0; 
+    border-radius: 8px; 
+    margin: 10px; 
+  }
+  
+/*option to change bookmark color maybe*/
+  .notebook-bookmark {
+    position: absolute;
+    top: 10px; 
+    left: 10px; 
+    width: 25px; 
+    height: 80px; 
+    background-color: #042916; 
+    border-radius: 5px;
+  }
+  
+  .notebook-bookmark::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: #212803; 
+    border-radius: 50%;
+  }
+  
+  .notebook-info h2 {
+    margin: 0; 
+  }
+  
+  .notebook-info p {
+    margin: 0; 
+    font-size: 12px; 
+    color: #808080; 
+  }
+>>>>>>> 52bf9b5b03005f9f263f0ba9f3eb6812fef1e136
 
 .sort-dropdown .dropdown-content a {
   color: var(--white); /* Changed text color */
