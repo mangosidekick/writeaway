@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Gaegu&display=swap');
+
 /* Colors defined using CSS variables */
 :root {
     --white: #FFF7D7;
@@ -6,7 +9,9 @@
     --grey: #6B705C;
     --black: #000000;
 }
-
+*{
+    font-family: "Gaegu", sans-serif;
+}
 body {
     display: flex;
     justify-content: center;  /* Center horizontally */
@@ -14,7 +19,7 @@ body {
     height: 100vh;            /* Full height of viewport */
     background-color: var(--white); /* Use the --white color variable for the background */
     margin: 0;
-    font-family: 'Gaegu', sans-serif; /* Applying Gaegu font to the whole body */
+    padding: 0;
     flex-direction: column; /* Stack header and paper vertically */
 }
 
@@ -25,21 +30,22 @@ body {
     align-items: center;     /* Align items in the header */
     padding: 0.5rem;
     background-color: var(--green); /* Use the new green color */
-    width: 100%;
     position: sticky;
+    width: 100%;
     top: 0;
-    z-index: 100;
+    box-sizing: border-box;
 }
 
 .menu-icon {
     color: var(--white);
     font-size: 2rem;
+    margin-left: 10px;
     cursor: pointer;
-    margin-right: 20px; /* Add space for the title */
+    text-decoration: none;
 }
 
 .header h1 {
-    font-family: 'Concert One', cursive; /* Apply Concert One font to header title */
+    font-family: 'Gaegu', sans-serif;
     color: var(--white);
     font-size: 3rem;
     margin: 0; /* Remove any margin to ensure proper spacing */
@@ -109,13 +115,14 @@ input[type="color"] {
     padding: 5px;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
     margin-left: 9px;
 }
 
 button {
-    font-family: 'Concert One', cursive; /* Apply Concert One font to buttons */
-    background-color: var(--black); /* Black for button background */
-    color: var(--white); /* White for button text */
+    font-family: "Gaegu", sans-serif;
+    background-color: var(--white); /* Black for button background */
+    color: var(--black); /* White for button text */
     border: none;
     border-radius: 5px;
     margin-left: 9px;
@@ -125,7 +132,7 @@ button {
 }
 
 button:hover {
-    background-color: #333;
+    cursor: pointer;
 }
 
 /* Button container */
