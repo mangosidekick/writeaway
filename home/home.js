@@ -1,9 +1,7 @@
 const sortDropdownButton = document.getElementById('sortDropdownButton');
 const sortDropdownContent = document.getElementById('sortDropdownContent');
 const addNoteButton = document.querySelector('.add-note-button'); 
-const addContent = document.querySelector('.add-content');
 const newNotebookModal = document.querySelector('.new-notebook-modal');
-const newNotebookButton = document.querySelector('.add-content button:first-child'); 
 const colorOptions = newNotebookModal.querySelectorAll('.color-options div'); 
 const notebookCover = document.querySelector('.notebook-preview .notebook-cover');
 const patternOptions = newNotebookModal.querySelectorAll('.pattern-options div');
@@ -18,19 +16,6 @@ sortDropdownButton.addEventListener('click', () => {
 
 // Add event listener for the add button
 addNoteButton.addEventListener('click', () => {
-  addNoteButton.classList.toggle('active');
-  addContent.style.display = addContent.style.display === 'block' ? 'none' : 'block';
-
-  // Change the button's text based on its active state
-  if (addNoteButton.classList.contains('active')) {
-    addNoteButton.textContent = ""; // Set text to "X"
-  } else {
-    addNoteButton.textContent = "+"; // Set text back to "+"
-  }
-});
-
-// Add event listener for the "New notebook" button
-newNotebookButton.addEventListener('click', () => {
   newNotebookModal.style.display = 'block';
 });
 
