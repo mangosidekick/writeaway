@@ -7,7 +7,7 @@ const newNotebookButton = document.querySelector('.add-content button:first-chil
 const colorOptions = newNotebookModal.querySelectorAll('.color-options div'); 
 const notebookCover = document.querySelector('.notebook-preview .notebook-cover');
 const patternOptions = newNotebookModal.querySelectorAll('.pattern-options div');
-const notebook = document.querySelector('.notebook');
+const notebookContainer = document.querySelector('.notebook-container'); // Target the container
 const createButton = document.querySelector('.new-notebook-modal .buttons button.create');
 const searchBar = document.getElementById('search-bar');
 
@@ -58,28 +58,33 @@ createButton.addEventListener('click', () => {
   const formattedDate = currentDate.toLocaleDateString();
   const formattedTime = currentDate.toLocaleTimeString();
 
-  // Set the notebook's content
-  notebook.style.backgroundColor = coverColor;
-  notebook.style.backgroundImage = pagePattern;
-
-  // Add the notebook name and creation date
-  notebook.innerHTML += `
+  // Create a new notebook element
+  const newNotebook = document.createElement('div');
+  newNotebook.classList.add('notebook');
+  newNotebook.innerHTML = `
     <div class="notebook-content">
       <div class="notebook-info">
         <h2>${notebookName}</h2>
         <p>Created on: ${formattedDate} at ${formattedTime}</p>
       </div>
     </div>
-    <div class="notebook-bookmark"></div>
+    <i class="delete-icon fas fa-trash"></i> 
   `;
+  
+  // Style the new notebook
+  newNotebook.style.backgroundColor = coverColor;
+  newNotebook.style.backgroundImage = pagePattern;
+
+  // Append the new notebook to the container
+  notebookContainer.appendChild(newNotebook);
 
   // Make the notebook visible
-  notebook.style.display = 'block';
+  newNotebook.style.display = 'block';
 
   // Reset the modal
   newNotebookModal.style.display = 'none';
 });
-// masakit na ang likod -ereka
+
 // Add event listeners for color and pattern options (example)
 colorOptions.forEach(option => {
   option.addEventListener('click', () => {
@@ -106,10 +111,10 @@ patternOptions.forEach(option => {
 // Add event listener for the search bar
 searchBar.addEventListener('input', () => {
   const searchTerm = searchBar.value.toLowerCase();
-  const notebooks = notebook.querySelectorAll('.notebook-content');
+  const notebooks = notebookContainer.querySelectorAll('.notebook'); // Target the container
 
   notebooks.forEach(notebook => {
-    const notebookName = notebook.querySelector('h2').textContent.toLowerCase();
+    const notebookName = notebook.querySelector('.notebook-info h2').textContent.toLowerCase();
     // Check if the search term is present in the notebook name
     if (notebookName.includes(searchTerm)) {
       notebook.style.display = 'block';
@@ -117,4 +122,14 @@ searchBar.addEventListener('input', () => {
       notebook.style.display = 'none';
     }
   });
+});
+
+// Delete Notebook Functionality
+notebookContainer.addEventListener('click', (event) => {
+  if (event.target.classList.contains('delete-icon')) {
+    const notebookToDelete = event.target.closest('.notebook'); 
+    if (confirm('Are you sure you want to delete this notebook?')) {
+      notebookContainer.removeChild(notebookToDelete); 
+    }
+  }
 });
