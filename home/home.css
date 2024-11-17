@@ -451,33 +451,16 @@ body {
   width: 200px;
 }
 
-.add-content button:last-child {
-  background-color: var(--white); /* Changed background color */
-  color: var(--black); /* Changed text color */
-  font-size: 24px;
-  font-family: gauge, san-serif;
-}
-
-/*  Make the "New notebook" button white  */
-.add-content button:first-child {
-  background-color: var(--white);
-  color: var(--black); 
-  font-size: 24px;
-  font-family: gauge, san-serif;
-}
-
-/*  Make the "New board" button white  */
-.add-content button:nth-child(2) {
-  background-color: var(--white);
-  color: var(--black); 
-  font-size: 24px;
-  font-family: gauge, san-serif;
+.delete-notebook {
+  position: absolute;
+  bottom: 10px; /* Adjust vertical position */
+  right: 10px; /* Adjust horizontal position */
 }
 
 /*  Make the "Name" button full white  */
 .header button {
   background-color: var(--white);
-  color: var(--black);
+  color: var(--white);
   border: none;
   padding: 0.8rem 1.5rem;
   margin: 0.5rem;
