@@ -280,7 +280,7 @@ body {
 
 .new-notebook-modal select,
 .new-notebook-modal input[type="text"] {
-  width: 95%;
+  width: 100%;
   padding: 8px;
   border: 1px solid var(--grey); /* Changed border color */
   border-radius: 4px;
@@ -303,13 +303,15 @@ body {
   border-radius: 50%;
   cursor: pointer;
 }
-.new-notebook-modal .color-options div {
-  width: 30px; /* Adjust width as needed */
-  height: 15px; /* Adjust height as needed */
-  border-radius: 0; /* Set border-radius to 0 for rectangular shape */
-  margin: 0px; /* Add spacing between rectangles */ 
+
+.new-notebook-modal .pattern-options div {
+  border-radius: 4px;
 }
 
+.new-notebook-modal .color-options div.selected,
+.new-notebook-modal .pattern-options div.selected {
+  border: 2px solid var(--green); /* Changed border color */
+}
 
 .new-notebook-modal .buttons {
   display: flex;
@@ -465,24 +467,4 @@ body {
   border: none;
   padding: 0.8rem 1.5rem;
   margin: 0.5rem;
-}
-
-.trash-bin {
-  position: absolute;
-  top: 10px; /* Adjust vertical position as needed */
-  right: 10px; /* Adjust horizontal position as needed */
-  width: 30px; /* Adjust width as needed */
-  height: 30px; /* Adjust height as needed */
-  background-color: #ccc; /* Adjust background color as needed */
-  border: 1px solid #999; /* Adjust border color and width as needed */
-  border-radius: 5px; /* Adjust border radius as needed */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.trash-bin img {
-  width: 20px; /* Adjust image width as needed */
-  height: 20px; /* Adjust image height as needed */
 }

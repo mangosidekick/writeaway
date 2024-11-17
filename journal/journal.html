@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="style.css">
     <title>writeaway</title>
     <!--boxicons-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -18,20 +20,27 @@
 </head>
 <body>
 
+    <header class="header">
+        <!-- Use an anchor tag for the arrow link -->
+        <a href="../home/home.html" class="menu-icon">←</a> <!-- Arrow now functions as a link -->
+        <h1></h1> <!-- Empty header title to just have the arrow -->
+    </header>
+
     <div class="paper" id="paper">
         <textarea id="noteText" placeholder="Start writing here..."></textarea>
 
         <div class="controls">
-            <!-- Color Picker Input (with built-in apply functionality) -->
-            <input type="color" id="colorPicker" value="#ffffff"> <!-- Color picker triggers apply action directly -->
+            <div class="color-picker-container">
+                <input type="color" id="colorPicker" value="#ffffff">
+            </div>
         </div>
 
         <div class="clear-save-btns">
-            <button id="clearButton">Clear</button>
-            <button id="saveButton">Save</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+            <button id="clearButton">clear</button>
+            <button id="saveButton">save as txt</button>
+            <button id="saveProgressButton">save progress</button>
+        </div>
     </div>
-
     <script src="./journal.js"></script>
 
 

@@ -16,8 +16,6 @@ sortDropdownButton.addEventListener('click', () => {
 
 // Add event listener for the add button
 addNoteButton.addEventListener('click', () => {
-<<<<<<< HEAD
-=======
   addNoteButton.classList.toggle('active');
 
   // Change the button's text based on its active state
@@ -28,7 +26,6 @@ addNoteButton.addEventListener('click', () => {
   }
 
   // Show the new notebook modal
->>>>>>> 7e48eac3c67102186d8148de67df86f1fa8eb0b9
   newNotebookModal.style.display = 'block';
   notebookContainer.style.display = 'block'; // Make the container visible
 });
