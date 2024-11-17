@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const { connection, findUserByEmail } = require('./database');
+const { connection, findUserByEmail } = require('./db');
 const app = express();
 const port = 3000;
 
@@ -22,32 +22,55 @@ app.get('/', (req, res) => {
 app.post('/submit', (req, res) => {
     const { firstname, email, password, repeatPassword } = req.body;
 
+    console.log('Form Data:', req.body); // Log the form data
+
     // Basic validation
-    if (password !== repeatPassword) {
-        return res.status(400).send('Passwords do not match');
+    if (!firstname || !email || !password || password !== repeatPassword) {
+        console.log('Validation failed'); // Log validation failure
+        return res.status(400).json({ success: false, message: 'Validation failed' });
     }
 
     // Check if user already exists
     findUserByEmail(email, (err, user) => {
         if (err) {
             console.error('Error finding user:', err.message);
-            return res.status(500).send('Internal server error');
+            return res.status(500).json({ success: false, message: 'Internal server error' });
         }
 
         if (user) {
-            return res.status(400).send('User already exists');
+            console.log('User already exists'); // Log existing user
+            return res.status(400).json({ success: false, message: 'User already exists' });
         }
 
         // Add user to database
         const newUser = { firstname, email, password };
-        const insertQuery = 'INSERT INTO signup_table (firstname, email, password) VALUES (?, ?, ?)';
+        const insertQuery = 'INSERT INTO writers (firstname, email, password) VALUES (?, ?, ?)';
         connection.query(insertQuery, [newUser.firstname, newUser.email, newUser.password], (err, results) => {
             if (err) {
                 console.error('Error inserting writer:', err.message);
-                return res.status(500).send('Internal server error');
+                return res.status(500).json({ success: false, message: 'Internal server error' });
             }
-            res.send(`User added: ${newUser.firstname}`);
+            console.log('User registered successfully'); // Log successful registration
+            res.json({ success: true, message: 'User registered successfully' });
         });
+    });
+});
+
+//login handle
+app.post('/login', (req, res) => {
+    const { email, password } = req.body;
+
+    findUserByEmail(email, (err, user) => {
+        if (err) {
+            console.error('Error finding user:', err.message);
+            return res.status(500).json({ success: false, message: 'Internal server error' });
+        }
+
+        if (!user || user.password !== password) {
+            return res.status(400).json({ success: false, message: 'Wrong email or password' });
+        }
+
+        res.json({ success: true, message: 'Login successful' });
     });
 });
 
