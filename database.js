@@ -19,7 +19,7 @@ connection.connect((err) => {
 });
 
 // Create database if it doesn't exist (optional)
-connection.query("CREATE DATABASE IF NOT EXISTS myappdb;", (err) => {
+connection.query("CREATE DATABASE IF NOT EXISTS signup_table;", (err) => {
   if (err) {
     console.error("Error creating database", err.message);
   } else {
@@ -32,9 +32,9 @@ connection.query("CREATE DATABASE IF NOT EXISTS myappdb;", (err) => {
         return;
       }
 
-      console.log("Switched to myappdb database.");
+      console.log("Switched to signup_table database.");
 
-      // Create signup_table table if it doesn't exist
+      // Create user table if it doesn't exist
       const createTableQuery = `
         CREATE TABLE IF NOT EXISTS signup_table (
           id INT AUTO_INCREMENT PRIMARY KEY,
@@ -58,7 +58,7 @@ connection.query("CREATE DATABASE IF NOT EXISTS myappdb;", (err) => {
 
 // Function to find user by email
 function findUserByEmail(email, callback) {
-  const query = 'SELECT * FROM  signup_table WHERE email = ?';
+  const query = 'SELECT * FROM signup_table WHERE email = ?';
   connection.query(query, [email], (err, results) => {
     if (err) {
       return callback(err, null);
