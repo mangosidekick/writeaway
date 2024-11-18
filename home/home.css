@@ -15,7 +15,7 @@ body {
   font-family: "Gaegu", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: var(--olive); /* Changed background color */
+  background-color: var(--white); /* Changed background color */
   color: var(--black); /* Changed text color */
 }
 
@@ -83,25 +83,25 @@ body {
 .sort-dropdown button {
   background-color: var(--olive); /* Changed background color */
   color: var(--white); /* Changed text color */
+  font-family: "Gaegu", sans-serif;  
+
 }
 
 .new-notebook-modal .buttons button.cancel {
-  background-color: var(--grey); /* Changed background color */
-  color: var(--black); /* Changed text color */
+  background-color: var(--green); /* Changed background color */
+  color: var(--white); /* Changed text color */
+  font-family: "Gaegu", sans-serif;  
 }
 
 .new-notebook-modal .buttons button.create {
   background-color: var(--green); 
   color: var(--white); /* Changed text color */
+  font-family: "Gaegu", sans-serif;  
+
 }
 
 /* Notebook Container Styles */
-.notebook-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start; /* Align items from the left */
-  margin-bottom: 20px;
-}
+
 
 /* Notebook Styles */
 .notebook {
@@ -280,7 +280,7 @@ body {
 
 .new-notebook-modal select,
 .new-notebook-modal input[type="text"] {
-  width: 100%;
+  width: 95%;
   padding: 8px;
   border: 1px solid var(--grey); /* Changed border color */
   border-radius: 4px;
@@ -291,22 +291,19 @@ body {
 .new-notebook-modal .color-options,
 .new-notebook-modal .pattern-options {
   display: flex;
-  justify-content: space-between;
   margin-bottom: 15px;
 }
 
 .new-notebook-modal .color-options div,
 .new-notebook-modal .pattern-options div {
-  width: 25%;
+  width: 30%;
   padding: 10px;
   border: 1px solid var(--grey); /* Changed border color */
-  border-radius: 50%;
   cursor: pointer;
+  border-radius: 0px;
+
 }
 
-.new-notebook-modal .pattern-options div {
-  border-radius: 4px;
-}
 
 .new-notebook-modal .color-options div.selected,
 .new-notebook-modal .pattern-options div.selected {
