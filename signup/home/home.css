@@ -15,7 +15,7 @@ body {
   font-family: "Gaegu", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: var(--olive); /* Changed background color */
+  background-color: var(--white); /* Changed background color */
   color: var(--black); /* Changed text color */
 }
 
@@ -83,25 +83,25 @@ body {
 .sort-dropdown button {
   background-color: var(--olive); /* Changed background color */
   color: var(--white); /* Changed text color */
+  font-family: "Gaegu", sans-serif;  
+
 }
 
 .new-notebook-modal .buttons button.cancel {
-  background-color: var(--grey); /* Changed background color */
-  color: var(--black); /* Changed text color */
+  background-color: var(--green); /* Changed background color */
+  color: var(--white); /* Changed text color */
+  font-family: "Gaegu", sans-serif;  
 }
 
 .new-notebook-modal .buttons button.create {
   background-color: var(--green); 
   color: var(--white); /* Changed text color */
+  font-family: "Gaegu", sans-serif;  
+
 }
 
 /* Notebook Container Styles */
-.notebook-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start; /* Align items from the left */
-  margin-bottom: 20px;
-}
+
 
 /* Notebook Styles */
 .notebook {
@@ -280,7 +280,7 @@ body {
 
 .new-notebook-modal select,
 .new-notebook-modal input[type="text"] {
-  width: 100%;
+  width: 95%;
   padding: 8px;
   border: 1px solid var(--grey); /* Changed border color */
   border-radius: 4px;
@@ -291,27 +291,29 @@ body {
 .new-notebook-modal .color-options,
 .new-notebook-modal .pattern-options {
   display: flex;
-  justify-content: space-between;
   margin-bottom: 15px;
 }
 
 .new-notebook-modal .color-options div,
 .new-notebook-modal .pattern-options div {
-  width: 25%;
+  width: 30%;
   padding: 10px;
   border: 1px solid var(--grey); /* Changed border color */
-  border-radius: 50%;
   cursor: pointer;
-}
+  border-radius: 0px;
 
-.new-notebook-modal .pattern-options div {
-  border-radius: 4px;
 }
+<<<<<<< HEAD
 
-.new-notebook-modal .color-options div.selected,
-.new-notebook-modal .pattern-options div.selected {
-  border: 2px solid var(--green); /* Changed border color */
+=======
+.new-notebook-modal .color-options div {
+  width: 30px; /* Adjust width as needed */
+  height: 15px; /* Adjust height as needed */
+  border-radius: 0; /* Set border-radius to 0 for rectangular shape */
+  margin: 0px; /* Add spacing between rectangles */ 
 }
+>>>>>>> d0461786a479bebacd0acb386a2740d7824fa0b8
+
 
 .new-notebook-modal .buttons {
   display: flex;
@@ -467,4 +469,24 @@ body {
   border: none;
   padding: 0.8rem 1.5rem;
   margin: 0.5rem;
+}
+
+.trash-bin {
+  position: absolute;
+  top: 10px; /* Adjust vertical position as needed */
+  right: 10px; /* Adjust horizontal position as needed */
+  width: 30px; /* Adjust width as needed */
+  height: 30px; /* Adjust height as needed */
+  background-color: #ccc; /* Adjust background color as needed */
+  border: 1px solid #999; /* Adjust border color and width as needed */
+  border-radius: 5px; /* Adjust border radius as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.trash-bin img {
+  width: 20px; /* Adjust image width as needed */
+  height: 20px; /* Adjust image height as needed */
 }
