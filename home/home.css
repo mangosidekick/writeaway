@@ -303,17 +303,13 @@ body {
   border-radius: 0px;
 
 }
-<<<<<<< HEAD
 
-=======
 .new-notebook-modal .color-options div {
   width: 30px; /* Adjust width as needed */
   height: 15px; /* Adjust height as needed */
   border-radius: 0; /* Set border-radius to 0 for rectangular shape */
   margin: 0px; /* Add spacing between rectangles */ 
 }
->>>>>>> d0461786a479bebacd0acb386a2740d7824fa0b8
-
 
 .new-notebook-modal .buttons {
   display: flex;
