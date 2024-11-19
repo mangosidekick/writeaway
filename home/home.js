@@ -14,22 +14,17 @@ sortDropdownButton.addEventListener('click', () => {
   sortDropdownContent.style.display = sortDropdownContent.style.display === 'block' ? 'none' : 'block';
 });
 
-// Add event listener for the add button
 addNoteButton.addEventListener('click', () => {
-  addNoteButton.classList.toggle('active');
-
-  // Change the button's text based on its active state
-  if (addNoteButton.classList.contains('active')) {
-    addNoteButton.textContent = ""; // Set text to "X"
-  } else {
-    addNoteButton.textContent = "+"; // Set text back to "+"
-  }
-
   // Show the new notebook modal
   newNotebookModal.style.display = 'block';
   notebookContainer.style.display = 'block'; // Make the container visible
-});
 
+  // Always set the button's text to "+"
+  addNoteButton.textContent = "+"; 
+
+  // Toggle the active class
+  addNoteButton.classList.toggle('active');
+});
 // Add event listener for the "Cancel" button
 const cancelButton = document.querySelector('.new-notebook-modal .buttons button.cancel');
 cancelButton.addEventListener('click', () => {
