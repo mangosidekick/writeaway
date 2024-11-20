@@ -138,7 +138,6 @@ body {
   background-color: var(--white); /* Changed background color */
   border-radius: 8px;
   margin: 10px;
-  position: relative; 
 }
 
 .notebook-info h2 {
@@ -459,6 +458,11 @@ body {
   width: 200px;
 }
 
+.delete-notebook {
+  position: absolute;
+  bottom: 10px; /* Adjust vertical position */
+  right: 10px; /* Adjust horizontal position */
+}
 
 /*  Make the "Name" button full white  */
 .header button {
@@ -469,22 +473,22 @@ body {
   margin: 0.5rem;
 }
 
-.delete-notebook {
-  bottom: 100px;
-  left: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  color: var(--black);
-  z-index: 10;
-}
+.delete-notebook { 
+  position: absolute; 
+  bottom: 10px; /* Adjust vertical position as needed */
+   left: 10px; /* Adjust horizontal position as needed */ 
+   background: none; 
+   border: none; 
+   cursor: pointer; 
+   font-size: 16px; 
+   color: var(--black); /* Adjust color as needed */
+   } 
 
-.delete-notebook i {
-  font-size: 20px;
-  color: var(--black);
-}
+   .delete-notebook i { 
+    font-size: 20px; 
+    color: var(--black); /* Adjust icon color as needed */ 
+  } 
 
-.delete-notebook:hover i {
-  color: rgb(0, 0, 0);
-}
+  .delete-notebook:hover i {
+     color: rgb(0, 0, 0); /* Adjust hover color as needed */ 
+    }
