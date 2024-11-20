@@ -9,7 +9,7 @@ const notebookContainer = document.querySelector('.notebook-container'); // Targ
 const createButton = document.querySelector('.new-notebook-modal .buttons button.create');
 const searchBar = document.getElementById('search-bar');
 
-// Add event listener for the "Name" button
+//  "Name" button
 sortDropdownButton.addEventListener('click', () => {
   sortDropdownContent.style.display = sortDropdownContent.style.display === 'block' ? 'none' : 'block';
 });
@@ -18,7 +18,6 @@ document.querySelectorAll('#sortDropdownContent a').forEach(function(link) {
   link.addEventListener('click', function(e) {
     e.preventDefault();
     var sortBy = this.getAttribute('data-sort-by');
-    console.log(`Sorting notebooks ${sortBy}`);
     sortNotebookList(sortBy);
   });
 });
@@ -29,7 +28,6 @@ function sortNotebookList(order) {
   notebooks.sort(function(a, b) {
     var textA = a.querySelector('.notebook-info h2').textContent.toUpperCase();
     var textB = b.querySelector('.notebook-info h2').textContent.toUpperCase();
-    console.log(`Comparing ${textA} with ${textB}`);
     if (order === 'a-to-z') {
       return textA < textB ? -1 : textA > textB ? 1 : 0;
     } else {
@@ -44,10 +42,8 @@ function sortNotebookList(order) {
 }
 
 addNoteButton.addEventListener('click', () => {
-  // Show the new notebook modal
   newNotebookModal.style.display = 'block';
-  notebookContainer.style.display = 'block'; // Make the container visible
-
+  notebookContainer.style.display = 'block';
   // Always set the button's text to "+"
   addNoteButton.textContent = "+"; 
 
@@ -55,18 +51,23 @@ addNoteButton.addEventListener('click', () => {
   addNoteButton.classList.toggle('active');
 });
 
-// Add event listener for the "Cancel" button
+//  "Cancel" button
 const cancelButton = document.querySelector('.new-notebook-modal .buttons button.cancel');
 cancelButton.addEventListener('click', () => {
   newNotebookModal.style.display = 'none';
 });
 
-// Add event listener for the "Create" button
+// "Create" button
 createButton.addEventListener('click', () => {
-  // Get the selected notebook name
-  const notebookName = document.getElementById('notebook-name').value;
+  // notebook name
+  const notebookName = document.getElementById('notebook-name').value.trim();
 
-  // Get the selected cover color
+  // Prevent creating a notebook without a name
+  if (notebookName === '') {
+    alert('Please enter a notebook name.');
+    return;
+  }
+
   const selectedColorOption = newNotebookModal.querySelector('.color-options .selected');
   const coverColor = selectedColorOption ? selectedColorOption.style.backgroundColor : '#fff';
 
@@ -131,13 +132,13 @@ patternOptions.forEach(option => {
 
 // Add event listener for the search bar
 searchBar.addEventListener('input', () => {
-  const searchTerm = searchBar.value.toLowerCase();
+  const searchTerm = searchBar.value.toLowerCase().trim();
   const notebooks = notebookContainer.querySelectorAll('.notebook'); // Target the container
 
   notebooks.forEach(notebook => {
-    const notebookName = notebook.querySelector('.notebook-info h2').textContent.toLowerCase();
-    // Check if the search term is present in the notebook name
-    if (notebookName.includes(searchTerm)) {
+    const notebookName = notebook.querySelector('.notebook-info h2').textContent.toLowerCase().trim();
+    // Check if the search term is present in the notebook name and that the notebook name is not empty
+    if (notebookName.includes(searchTerm) && notebookName !== '' && notebookName !== 'notebook name') {
       notebook.style.display = 'block';
     } else {
       notebook.style.display = 'none';
