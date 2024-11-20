@@ -14,6 +14,35 @@ sortDropdownButton.addEventListener('click', () => {
   sortDropdownContent.style.display = sortDropdownContent.style.display === 'block' ? 'none' : 'block';
 });
 
+document.querySelectorAll('#sortDropdownContent a').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    var sortBy = this.getAttribute('data-sort-by');
+    console.log(`Sorting notebooks ${sortBy}`);
+    sortNotebookList(sortBy);
+  });
+});
+
+function sortNotebookList(order) {
+  var notebooks = Array.from(notebookContainer.getElementsByClassName('notebook'));
+
+  notebooks.sort(function(a, b) {
+    var textA = a.querySelector('.notebook-info h2').textContent.toUpperCase();
+    var textB = b.querySelector('.notebook-info h2').textContent.toUpperCase();
+    console.log(`Comparing ${textA} with ${textB}`);
+    if (order === 'a-to-z') {
+      return textA < textB ? -1 : textA > textB ? 1 : 0;
+    } else {
+      return textA > textB ? -1 : textA < textB ? 1 : 0;
+    }
+  });
+
+  notebookContainer.innerHTML = '';
+  notebooks.forEach(function(notebook) {
+    notebookContainer.appendChild(notebook);
+  });
+}
+
 addNoteButton.addEventListener('click', () => {
   // Show the new notebook modal
   newNotebookModal.style.display = 'block';
@@ -25,6 +54,7 @@ addNoteButton.addEventListener('click', () => {
   // Toggle the active class
   addNoteButton.classList.toggle('active');
 });
+
 // Add event listener for the "Cancel" button
 const cancelButton = document.querySelector('.new-notebook-modal .buttons button.cancel');
 cancelButton.addEventListener('click', () => {
@@ -76,7 +106,7 @@ createButton.addEventListener('click', () => {
   newNotebookModal.style.display = 'none';
 });
 
-// Add event listeners for color and pattern options (example)
+// Add event listeners for color and pattern options
 colorOptions.forEach(option => {
   option.addEventListener('click', () => {
     // Remove the 'selected' class from all color options
@@ -94,7 +124,7 @@ patternOptions.forEach(option => {
     patternOptions.forEach(o => o.classList.remove('selected'));
     // Add the 'selected' class to the clicked option
     option.classList.add('selected');
-    // Update the notebook cover pattern, sheeesh
+    // Update the notebook cover pattern
     notebookCover.style.backgroundImage = option.style.backgroundImage;
   });
 });
@@ -115,7 +145,7 @@ searchBar.addEventListener('input', () => {
   });
 });
 
- // Delete Notebook Functionality
+// Delete Notebook Functionality
 notebookContainer.addEventListener('click', (event) => {
   if (event.target.classList.contains('delete-icon')) {
     const notebookToDelete = event.target.closest('.notebook'); 
