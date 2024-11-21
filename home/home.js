@@ -1,3 +1,4 @@
+// DOM Elements
 const sortDropdownButton = document.getElementById('sortDropdownButton');
 const sortDropdownContent = document.getElementById('sortDropdownContent');
 const addNoteButton = document.querySelector('.add-note-button'); 
@@ -81,21 +82,8 @@ function addNotebookToContainer(notebookName, coverColor, notebookId, createdAt,
     const newNotebook = document.createElement('div');
     newNotebook.classList.add('notebook');
 
-<<<<<<< HEAD
-  // Add click event to the notebook to redirect to journal.html
-  newNotebook.addEventListener('click', (event) => {
-    // Ensure the click event isn't on the delete icon
-    if (!event.target.classList.contains('delete-icon')) { 
-      window.location.href = '../journal/journal.html'; 
-    } 
-  });
-
-  // Append the new notebook to the container
-  notebookContainer.appendChild(newNotebook);
-=======
     const formattedDate = new Date(createdAt).toLocaleDateString();
     const formattedTime = new Date(createdAt).toLocaleTimeString();
->>>>>>> 2e6ba9d78e95eafc51eb4a6a1f5d22a17f5b61f3
 
     newNotebook.innerHTML = `
         <div class="notebook-content">
@@ -112,19 +100,10 @@ function addNotebookToContainer(notebookName, coverColor, notebookId, createdAt,
     notebookContainer.appendChild(newNotebook);
     newNotebook.style.display = 'block';
 
-<<<<<<< HEAD
-  // Reset the modal
-  newNotebookModal.style.display = 'none';
-
-  // Clear the input field
-  document.getElementById('notebook-name').value = '';
-});
-=======
     // Add event listener for the notebook div to redirect to the journal page
     newNotebook.addEventListener('click', function() {
         window.location.href = `../journal/journal.html?notebookId=${notebookId}`;
     });
->>>>>>> 2e6ba9d78e95eafc51eb4a6a1f5d22a17f5b61f3
 
     // Prevent redirection if delete icon is clicked
     newNotebook.querySelector('.delete-icon').addEventListener('click', function(event) {
@@ -193,21 +172,12 @@ function filterNotebooks() {
   });
 }
 
-<<<<<<< HEAD
-// Delete Notebook Functionality
-notebookContainer.addEventListener('click', (event) => {
-  if (event.target.classList.contains('delete-icon')) {
-    const notebookToDelete = event.target.closest('.notebook'); 
-    if (confirm('Are you sure you want to delete this notebook?')) {
-      notebookContainer.removeChild(notebookToDelete); 
-=======
 function showNotification(message, isError = false) {
     const notification = document.getElementById('notification');
     notification.textContent = message;
     notification.className = 'notification';
     if (isError) {
         notification.classList.add('error');
->>>>>>> 2e6ba9d78e95eafc51eb4a6a1f5d22a17f5b61f3
     }
     notification.style.display = 'block';
     setTimeout(() => {

@@ -101,9 +101,9 @@ function addNotebookToContainer(notebookName, coverColor, notebookId, createdAt,
     newNotebook.style.display = 'block';
 
     // Add event listener for the notebook div to redirect to the journal page
-    newNotebook.addEventListener(`'click', function() {
-        window.location.href = ../journal/journal.html?notebookId=${notebookId};
-    }`);
+    newNotebook.addEventListener('click', function() {
+        window.location.href = `../journal/journal.html?notebookId=${notebookId}`;
+    });
 
     // Prevent redirection if delete icon is clicked
     newNotebook.querySelector('.delete-icon').addEventListener('click', function(event) {
@@ -114,9 +114,9 @@ function addNotebookToContainer(notebookName, coverColor, notebookId, createdAt,
 
 function deleteNotebook(notebookId, notebookElement) {
     if (confirm('Are you sure you want to delete this notebook?')) {
-        fetch(`/deleteNotebook?notebookId=${notebookId}, {
+        fetch(`/deleteNotebook?notebookId=${notebookId}`, {
             method: 'DELETE'
-        }`)
+        })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
