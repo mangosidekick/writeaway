@@ -17,24 +17,19 @@
 </head>
 <body>
     <header class="header">
-      <div class="menu-icon">☰</div>
-      <h1></h1>
+      <a href="../signup/login.html" class="menu-icon">←</a> 
       <input type="text" id="search-bar" placeholder="Search notebooks..."> 
     </header>
   
-      <div class="view-options">
-   
-        <div class="sort-dropdown">
-          <button id="sortDropdownButton">Name</button>
-          <div class="dropdown-content" id="sortDropdownContent">
-            <a href="#" data-sort-by="manual">Manual</a>
-            <a href="#" data-sort-by="date-created">Date created</a>
-            <a href="#" data-sort-by="date-modified">Date modified</a>
-            <a href="#" data-sort-by="a-to-z">From A to Z</a>
-            <a href="#" data-sort-by="z-to-a">From Z to A</a>
-          </div>
+    <div class="view-options">
+      <div class="sort-dropdown">
+        <button id="sortDropdownButton">Name</button>
+        <div class="dropdown-content" id="sortDropdownContent">
+          <a href="#" data-sort-by="a-to-z">From A to Z</a>
+          <a href="#" data-sort-by="z-to-a">From Z to A</a>
         </div>
       </div>
+    </div>
   
     <div class="add-note-button">+</div>
   
@@ -44,8 +39,9 @@
       <input type="text" id="notebook-name" placeholder="Enter notebook name">
       <label>Cover color</label>
       <div class="color-options">
-        <div class="selected" style="background-color: #ebebeb;"></div> <div style="background-color: #f0f0f0;"></div>
-        <div style="background-color: #090c0f;"></div> 
+        <div class="selected" style="background-color: #ebebeb;"></div> 
+        <div style="background-color: #f0f0f0;"></div>
+        <div style="background-color: #4f7155;"></div> 
         <div style="background-color: #ba3a42;"></div>
         <div style="background-color: #ba6b3a;"></div>
         <div style="background-color: #c9bd38;"></div>
@@ -63,15 +59,14 @@
     <div class="notebook-container"> 
       <div class="notebook"> 
         <div class="notebook-content">
+          <div class="notebook-info">
+            <h2>Notebook Name</h2> 
+          </div> 
+          <button class="delete-notebook" title="Delete Notebook"> 
+            <i class="fas fa-trash"></i> 
+          </button>
+         </div> 
         </div>
-        <button class="delete-notebook" title="Delete Notebook">
-          <i class="fas fa-trash"></i>
-        </button>
-      </div>
-      <div class="notebook-info">
-        <h2></h2>
-        <p></p>
-      </div>
     </div> 
     <script src="home.js"></script>
 </body>
