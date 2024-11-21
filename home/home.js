@@ -71,6 +71,14 @@ createButton.addEventListener('click', () => {
   newNotebook.style.backgroundColor = coverColor;
   newNotebook.style.backgroundImage = pagePattern;
 
+  // Add click event to the notebook to redirect to journal.html
+  newNotebook.addEventListener('click', (event) => {
+    // Ensure the click event isn't on the delete icon
+    if (!event.target.classList.contains('delete-icon')) { 
+      window.location.href = '../journal/journal.html'; 
+    } 
+  });
+
   // Append the new notebook to the container
   notebookContainer.appendChild(newNotebook);
 
@@ -79,6 +87,9 @@ createButton.addEventListener('click', () => {
 
   // Reset the modal
   newNotebookModal.style.display = 'none';
+
+  // Clear the input field
+  document.getElementById('notebook-name').value = '';
 });
 
 // Add event listeners for color and pattern options (example)
@@ -120,7 +131,7 @@ searchBar.addEventListener('input', () => {
   });
 });
 
- // Delete Notebook Functionality
+// Delete Notebook Functionality
 notebookContainer.addEventListener('click', (event) => {
   if (event.target.classList.contains('delete-icon')) {
     const notebookToDelete = event.target.closest('.notebook'); 
