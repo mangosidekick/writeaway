@@ -1,3 +1,4 @@
+// DOM Elements
 const sortDropdownButton = document.getElementById('sortDropdownButton');
 const sortDropdownContent = document.getElementById('sortDropdownContent');
 const addNoteButton = document.querySelector('.add-note-button'); 
@@ -8,168 +9,212 @@ const patternOptions = newNotebookModal.querySelectorAll('.pattern-options div')
 const notebookContainer = document.querySelector('.notebook-container'); // Target the container
 const createButton = document.querySelector('.new-notebook-modal .buttons button.create');
 const searchBar = document.getElementById('search-bar');
-
-// Function to check if a color is dark
-function isColorDark(color) {
-  const r = parseInt(color.substring(1, 3), 16);
-  const g = parseInt(color.substring(3, 5), 16);
-  const b = parseInt(color.substring(5, 7), 16);
-  const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-  return brightness < 128;
-}
-
-// Add event listener for the "Name" button
-sortDropdownButton.addEventListener('click', () => {
-  sortDropdownContent.style.display = sortDropdownContent.style.display === 'block' ? 'none' : 'block';
-});
-
-document.querySelectorAll('#sortDropdownContent a').forEach(function(link) {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    var sortBy = this.getAttribute('data-sort-by');
-    sortNotebookList(sortBy);
-  });
-});
-
-function sortNotebookList(order) {
-  var notebooks = Array.from(notebookContainer.getElementsByClassName('notebook'));
-
-  notebooks.sort(function(a, b) {
-    var textA = a.querySelector('.notebook-info h2').textContent.toUpperCase();
-    var textB = b.querySelector('.notebook-info h2').textContent.toUpperCase();
-    if (order === 'a-to-z') {
-      return textA < textB ? -1 : textA > textB ? 1 : 0;
-    } else {
-      return textA > textB ? -1 : textA < textB ? 1 : 0;
-    }
-  });
-
-  notebookContainer.innerHTML = '';
-  notebooks.forEach(function(notebook) {
-    notebookContainer.appendChild(notebook);
-  });
-}
-
-addNoteButton.addEventListener('click', () => {
-  newNotebookModal.style.display = 'block';
-  notebookContainer.style.display = 'block';
-  // Always set the button's text to "+"
-  addNoteButton.textContent = "+"; 
-
-  // Toggle the active class
-  addNoteButton.classList.toggle('active');
-});
-
-// Add event listener for the "Cancel" button
 const cancelButton = document.querySelector('.new-notebook-modal .buttons button.cancel');
-cancelButton.addEventListener('click', () => {
+const logoutButton = document.getElementById('logout-button'); // Update the logout button ID
+
+// Functions
+function toggleDropdown() {
+  sortDropdownContent.style.display = sortDropdownContent.style.display === 'block' ? 'none' : 'block';
+}
+
+function toggleAddNoteButton() {
+  addNoteButton.classList.toggle('active');
+  addNoteButton.textContent = addNoteButton.classList.contains('active') ? "" : "+";
+  newNotebookModal.style.display = 'block';
+  notebookContainer.style.display = 'block'; // Make the container visible
+}
+
+function closeNewNotebookModal() {
   newNotebookModal.style.display = 'none';
-});
+}
 
-// Add event listener for the "Create" button
-createButton.addEventListener('click', () => {
-  // Get the selected notebook name
-  const notebookName = document.getElementById('notebook-name').value.trim();
-
-  // Prevent creating a notebook without a name
-  if (notebookName === '') {
-    alert('Please enter a notebook name.');
-    return;
-  }
-
+function createNotebook() {
+  const notebookName = document.getElementById('notebook-name').value;
   const selectedColorOption = newNotebookModal.querySelector('.color-options .selected');
   const coverColor = selectedColorOption ? selectedColorOption.style.backgroundColor : '#fff';
 
-  // Get the selected page pattern
-  const selectedPatternOption = newNotebookModal.querySelector('.pattern-options .selected');
-  const pagePattern = selectedPatternOption ? selectedPatternOption.style.backgroundImage : 'none';
-
-  // Get current date and time
-  const currentDate = new Date();
-  const formattedDate = currentDate.toLocaleDateString();
-  const formattedTime = currentDate.toLocaleTimeString();
-
-  // Create a new notebook element
-  const newNotebook = document.createElement('div');
-  newNotebook.classList.add('notebook');
-  newNotebook.innerHTML = `
-    <div class="notebook-content">
-      <div class="notebook-info">
-        <h2>${notebookName}</h2>
-        <p>Created on: ${formattedDate} at ${formattedTime}</p>
-      </div>
-      <button class="delete-notebook" title="Delete Notebook">
-        <i class="fas fa-trash"></i>
-      </button>
-    </div>
-  `;
-  
-  // Style the new notebook
-  newNotebook.style.backgroundColor = coverColor;
-  newNotebook.style.backgroundImage = pagePattern;
-
-  // Adjust trash bin icon color based on cover color
-  const trashIcon = newNotebook.querySelector('.delete-notebook i');
-  if (isColorDark(coverColor)) {
-    trashIcon.style.color = '#fff';  // Change to white if cover is dark
-  } else {
-    trashIcon.style.color = '#000';  // Change to black if cover is light
+  if (!notebookName || !coverColor) {
+      showNotification('Please enter a notebook name and select a cover color.', true);
+      return;
   }
 
-  // Append the new notebook to the container
-  notebookContainer.appendChild(newNotebook);
+  fetch('/notebooks')
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              const notebookTitles = data.notebooks.map(notebook => notebook.title.toLowerCase());
+              if (notebookTitles.includes(notebookName.toLowerCase())) {
+                  showNotification('Title already exists. Please choose a different title.', true);
+              } else {
+                  fetch('/createNotebook', {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify({ title: notebookName, coverColor: coverColor })
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                      if (data.success) {
+                          addNotebookToContainer(notebookName, coverColor, data.notebookId, data.createdAt, data.email);
+                          closeNewNotebookModal();
+                          showNotification('Notebook created successfully.');
+                      } else {
+                          showNotification(data.message, true);
+                      }
+                  })
+                  .catch(error => {
+                      console.error('Error:', error);
+                      showNotification('Error creating notebook', true);
+                  });
+              }
+          } else {
+              showNotification('Error fetching notebooks', true);
+          }
+      })
+      .catch(error => {
+          console.error('Error:', error);
+          showNotification('Error fetching notebooks', true);
+      });
+}
 
-  // Make the notebook visible
-  newNotebook.style.display = 'block';
+function addNotebookToContainer(notebookName, coverColor, notebookId, createdAt, email) {
+    const newNotebook = document.createElement('div');
+    newNotebook.classList.add('notebook');
 
-  // Reset the modal
-  newNotebookModal.style.display = 'none';
-});
+    const formattedDate = new Date(createdAt).toLocaleDateString();
+    const formattedTime = new Date(createdAt).toLocaleTimeString();
 
-// Add event listeners for color and pattern options
-colorOptions.forEach(option => {
-  option.addEventListener('click', () => {
-    // Remove the 'selected' class from all color options
-    colorOptions.forEach(o => o.classList.remove('selected'));
-    // Add the 'selected' class to the clicked option
-    option.classList.add('selected');
-    // Update the notebook cover color
-    notebookCover.style.backgroundColor = option.style.backgroundColor;
-  });
-});
+    newNotebook.innerHTML = `
+        <div class="notebook-content">
+            <div class="notebook-info">
+                <h2>${notebookName}</h2>
+                <p>Email: ${email}</p>
+                <p>Notebook ID: ${notebookId}</p>
+                <p>Created on: ${formattedDate} at ${formattedTime}</p>
+            </div>
+        </div>
+        <i class="delete-icon fas fa-trash" data-notebook-id="${notebookId}"></i> 
+    `;
+    newNotebook.style.backgroundColor = coverColor;
+    notebookContainer.appendChild(newNotebook);
+    newNotebook.style.display = 'block';
 
-patternOptions.forEach(option => {
-  option.addEventListener('click', () => {
-    // Remove the 'selected' class from all pattern options
-    patternOptions.forEach(o => o.classList.remove('selected'));
-    // Add the 'selected' class to the clicked option
-    option.classList.add('selected');
-    // Update the notebook cover pattern
-    notebookCover.style.backgroundImage = option.style.backgroundImage;
-  });
-});
+    // Add event listener for the notebook div to redirect to the journal page
+    newNotebook.addEventListener(`'click', function() {
+        window.location.href = ../journal/journal.html?notebookId=${notebookId};
+    }`);
 
-// Add event listener for the search bar
-searchBar.addEventListener('input', () => {
-  const searchTerm = searchBar.value.toLowerCase().trim();
-  const notebooks = notebookContainer.querySelectorAll('.notebook'); // Target the container
+    // Prevent redirection if delete icon is clicked
+    newNotebook.querySelector('.delete-icon').addEventListener('click', function(event) {
+        event.stopPropagation();
+        deleteNotebook(notebookId, newNotebook);
+    });
+}
+
+function deleteNotebook(notebookId, notebookElement) {
+    if (confirm('Are you sure you want to delete this notebook?')) {
+        fetch(`/deleteNotebook?notebookId=${notebookId}, {
+            method: 'DELETE'
+        }`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                notebookContainer.removeChild(notebookElement);
+                showNotification('Notebook deleted successfully.');
+            } else {
+                showNotification('Failed to delete notebook: ' + data.message, true);
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting notebook:', error);
+            showNotification('Error deleting notebook', true);
+        });
+    }
+}
+
+function loadUserNotebooks() {
+    fetch('/notebooks')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                data.notebooks.forEach(notebook => {
+                    addNotebookToContainer(notebook.title, notebook.cover_color, notebook.id, notebook.created_at, notebook.email);
+                });
+            } else {
+                console.error('Error fetching notebooks:', data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+function handleColorSelection(event) {
+  colorOptions.forEach(option => option.classList.remove('selected'));
+  event.target.classList.add('selected');
+  notebookCover.style.backgroundColor = event.target.style.backgroundColor;
+}
+
+function handlePatternSelection(event) {
+  patternOptions.forEach(option => option.classList.remove('selected'));
+  event.target.classList.add('selected');
+  notebookCover.style.backgroundImage = event.target.style.backgroundImage;
+}
+
+function filterNotebooks() {
+  const searchTerm = searchBar.value.toLowerCase();
+  const notebooks = notebookContainer.querySelectorAll('.notebook');
 
   notebooks.forEach(notebook => {
-    const notebookName = notebook.querySelector('.notebook-info h2').textContent.toLowerCase().trim();
-    if (notebookName.includes(searchTerm) && notebookName !== '' && notebookName !== 'notebook name') {
-      notebook.style.display = 'block';
-    } else {
-      notebook.style.display = 'none';
-    }
+    const notebookName = notebook.querySelector('.notebook-info h2').textContent.toLowerCase();
+    notebook.style.display = notebookName.includes(searchTerm) ? 'block' : 'none';
   });
-});
+}
 
-// Delete Notebook Functionality
-notebookContainer.addEventListener('click', (event) => {
-  if (event.target.classList.contains('fa-trash')) {
-    const notebookToDelete = event.target.closest('.notebook'); 
-    if (confirm('Are you sure you want to delete this notebook?')) {
-      notebookContainer.removeChild(notebookToDelete); 
+function showNotification(message, isError = false) {
+    const notification = document.getElementById('notification');
+    notification.textContent = message;
+    notification.className = 'notification';
+    if (isError) {
+        notification.classList.add('error');
     }
+    notification.style.display = 'block';
+    setTimeout(() => {
+        notification.style.display = 'none';
+    }, 3000);
+}
+
+// Add the logout function
+function logoutUser(event) {
+    event.preventDefault(); // Prevents the default action of the link
+    
+    // Display confirmation dialog
+    if (confirm('Are you sure you want to log out?')) {
+        // If the user clicks "OK", redirect to Login.html
+        // Perform any necessary cleanup actions here (like ending sessions)
+        window.location.href = '../login.html';
+    }
+    // If the user clicks "Cancel", nothing happens
+}
+
+// Load user's notebooks when the page loads
+document.addEventListener('DOMContentLoaded', loadUserNotebooks);
+
+// Event Listeners
+sortDropdownButton.addEventListener('click', toggleDropdown);
+addNoteButton.addEventListener('click', toggleAddNoteButton);
+cancelButton.addEventListener('click', closeNewNotebookModal);
+createButton.addEventListener('click', createNotebook);
+colorOptions.forEach(option => option.addEventListener('click', handleColorSelection));
+patternOptions.forEach(option => option.addEventListener('click', handlePatternSelection));
+searchBar.addEventListener('input', filterNotebooks);
+logoutButton.addEventListener('click', logoutUser); // Add the event listener for logout
+
+notebookContainer.addEventListener('click', event => {
+  if (event.target.classList.contains('delete-icon')) {
+    const notebookId = event.target.dataset.notebookId;
+    const notebookElement = event.target.closest('.notebook');
+    deleteNotebook(notebookId, notebookElement);
   }
 });

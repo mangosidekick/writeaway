@@ -58,10 +58,10 @@ document.getElementById('form').addEventListener('submit', function(event) {
         .then(data => {
             if (data.success) {
                 const firstname = formData.get('firstname'); // Get the user's first name
-                window.location.href = `/confirm.html?name=${encodeURIComponent(firstname)}`; 
+                window.location.href = `/confirm.html?name=${encodeURIComponent(firstname)}`;
             } else {
                 document.getElementById('error-message').textContent = data.message;
-            }
+            }                        
         })
         .catch(error => {
             console.error('Error:', error);

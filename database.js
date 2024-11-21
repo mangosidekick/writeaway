@@ -1,5 +1,3 @@
-database.js
-
 const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
@@ -11,17 +9,13 @@ const connection = mysql.createConnection({
   host: process.env.DB_HOST || 'localhost',
   port: process.env.DB_PORT || 3306,
   user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || 'Vincent17',
+  password: process.env.DB_PASSWORD || 'mang03sRbest',
   database: process.env.DB_NAME || 'writeaway_schema',
 });
 
 connection.connect((err) => {
   if (err) {
-<<<<<<< HEAD
     console.error('Error connecting to the MySQL:', err.message);
-=======
-    console.error("error connecting to the MySQL:", err.message);
->>>>>>> b77f0d3e34323805ac01b8d703ee887cb24f5a2c
     return;
   }
   console.log('Connected to the MySQL Server.');
@@ -30,22 +24,14 @@ connection.connect((err) => {
 // Create database if it doesn't exist (optional)
 connection.query('CREATE DATABASE IF NOT EXISTS writeaway_schema;', (err) => {
   if (err) {
-<<<<<<< HEAD
     console.error('Error creating database:', err.message);
-=======
-    console.error("error creating database", err.message);
->>>>>>> b77f0d3e34323805ac01b8d703ee887cb24f5a2c
   } else {
     console.log('Database created or already exists');
 
     // Switch to the newly created database
     connection.changeUser({ database: 'writeaway_schema' }, (err) => {
       if (err) {
-<<<<<<< HEAD
         console.error('Error switching database:', err.message);
-=======
-        console.error("error switching database", err.message);
->>>>>>> b77f0d3e34323805ac01b8d703ee887cb24f5a2c
         return;
       }
 
@@ -65,11 +51,7 @@ connection.query('CREATE DATABASE IF NOT EXISTS writeaway_schema;', (err) => {
 
       connection.query(createTableQuery, (err) => {
         if (err) {
-<<<<<<< HEAD
           console.error('Error creating table:', err.message);
-=======
-          console.error("error creating table", err.message);
->>>>>>> b77f0d3e34323805ac01b8d703ee887cb24f5a2c
         } else {
           console.log('Signup table created or already exists');
         }

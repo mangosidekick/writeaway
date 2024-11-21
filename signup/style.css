@@ -193,6 +193,41 @@ form button:focus{
   }
 
 /*confirm page*/
+
+.confirm-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#toLogin-button.confirm-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 50%;
+  height: 40px;
+  padding: 0 15px;
+  margin: 0px 0;
+  color: black;
+  font-size: 15px;
+  background: var(--olive);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+#toLogin-button.confirm-button:hover {
+  gap: 15px;
+  background-color: var(--green);
+}
+
+#toLogin-button.confirm-button:focus {
+  outline: none;
+  background-color: var(--green);
+}
+
 .confirm-button button{
     display: flex;
     align-items: center;
