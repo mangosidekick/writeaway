@@ -12,7 +12,7 @@ const connection = mysql.createConnection({
 // Connect to MySQL server
 connection.connect((err) => {
   if (err) {
-    console.error("Error connecting to the MySQL:", err.message);
+    console.error("error connecting to the MySQL:", err.message);
     return;
   }
   console.log("Connected to the MySQL Server.");
@@ -21,14 +21,14 @@ connection.connect((err) => {
 // Create database if it doesn't exist (optional)
 connection.query("CREATE DATABASE IF NOT EXISTS signup_table;", (err) => {
   if (err) {
-    console.error("Error creating database", err.message);
+    console.error("error creating database", err.message);
   } else {
     console.log("Database created or already exists");
 
     // Switch to the newly created database
     connection.changeUser({database: 'writeaway_schema'}, (err) => {
       if (err) {
-        console.error("Error switching database", err.message);
+        console.error("error switching database", err.message);
         return;
       }
 
@@ -47,7 +47,7 @@ connection.query("CREATE DATABASE IF NOT EXISTS signup_table;", (err) => {
 
       connection.query(createTableQuery, (err) => {
         if (err) {
-          console.error("Error creating table", err.message);
+          console.error("error creating table", err.message);
         } else {
           console.log("Signup table created or already exists");
         }
