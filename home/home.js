@@ -1,4 +1,3 @@
-// DOM Elements
 const sortDropdownButton = document.getElementById('sortDropdownButton');
 const sortDropdownContent = document.getElementById('sortDropdownContent');
 const addNoteButton = document.querySelector('.add-note-button'); 
