@@ -366,6 +366,7 @@ body {
 }
 
 .add-note-button {
+  content: "+";
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -405,6 +406,7 @@ body {
   align-items: center;
   font-family: "Gaegu", sans-serif;  
   font-size: 4em;
+  content: "+";
 }
 
 .add-note-button::after {
@@ -414,6 +416,7 @@ body {
   display: block; 
   line-height: 1;
   font-size: 40px; 
+  
 }
 
 

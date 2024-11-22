@@ -20,7 +20,7 @@
       <a href="../signup/login.html" class="menu-icon">←</a> 
       <input type="text" id="search-bar" placeholder="Search notebooks..."> 
     </header>
-  
+
     <div class="view-options">
       <div class="sort-dropdown">
         <button id="sortDropdownButton">Name</button>
@@ -30,9 +30,9 @@
         </div>
       </div>
     </div>
-  
+
     <div class="add-note-button">+</div>
-  
+
     <div class="new-notebook-modal">
       <h2>New notebook</h2>
       <label for="notebook-name">Notebook name</label>
@@ -50,6 +50,9 @@
         <div style="background-color: #416191;"></div>
         <div style="background-color: #f792ad;"></div>
       </div>
+      <div class="notebook-preview">
+        <div class="notebook-cover"></div>
+      </div>
       <div class="buttons">
         <button class="cancel">Cancel</button>
         <button class="create">Create</button>
@@ -66,8 +69,9 @@
             <i class="fas fa-trash"></i> 
           </button>
          </div> 
-        </div>
+      </div>
     </div> 
+    <div id="notification" class="notification"></div>
     <script src="home.js"></script>
 </body>
 </html>
