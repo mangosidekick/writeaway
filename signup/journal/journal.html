@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <title>writeaway</title>
+    <!--boxicons-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!--font awesome icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <!--style-->
+    <link rel="stylesheet" href="./journal.css">
+    <!--favicon (header icon)-->
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+    <link rel="manifest" href="../assets/site.webgit pullmaniafest">
+</head>
+<body>
+
+    <header class="header">
+        <!-- Use an anchor tag for the arrow link -->
+        <a href="../home/home.html" class="menu-icon">←</a> <!-- Arrow now functions as a link -->
+        <h1></h1> <!-- Empty header title to just have the arrow -->
+    </header>
+
+    <div class="paper" id="paper">
+        <textarea id="noteText" placeholder="Start writing here..."></textarea>
+
+        <div class="controls">
+            <div class="color-picker-container">
+                <input type="color" id="colorPicker" value="#ffffff">
+            </div>
+        </div>
+
+        <div class="clear-save-btns">
+            <button id="clearButton">clear</button>
+            <button id="saveButton">save as txt</button>
+            <button id="saveProgressButton">save progress</button>
+        </div>
+    </div>
+    <script src="./journal.js"></script>
+
+
+</body>
+</html>
