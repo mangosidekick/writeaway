@@ -114,7 +114,6 @@ body {
   padding: 30px;
   display: flex;
   justify-content: flex-start;  
-  flex-wrap: wrap;
 }
 
 
@@ -122,7 +121,6 @@ body {
 .notebook {
   width: 150px; /* Adjust to your desired width */
   height: 200px;
-  overflow: hidden;
   border-radius: 10px;
   background-color: var(--white); /* Changed background color */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -132,20 +130,14 @@ body {
   margin-bottom: 10px; /* Spacing between notebooks on new rows */
   display: none; /* Initially hide the notebooks */
   align-items: center; 
+  float: left;
 }
 
 .notebook-content {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  padding: 20px;
   background-color: var(--white); /* Changed background color */
+  border-radius: 8px;
   margin: 10px;
-}
-
-.notebook-info {
-  padding: 10px;
-  box-sizing: border-box;
-  overflow: hidden;
 }
 
 .notebook-info h2 {
@@ -157,9 +149,6 @@ body {
   margin: 0;
   font-size: 12px;
   color: var(--black);
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
 }
 
 /* View Options Styles */
