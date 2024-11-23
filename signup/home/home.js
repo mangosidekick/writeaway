@@ -18,33 +18,33 @@ function toggleDropdown() {
 }
 
 document.querySelectorAll('#sortDropdownContent a').forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      var sortBy = this.getAttribute('data-sort-by');
-      console.log(`Sorting notebooks ${sortBy}`);
-      sortNotebookList(sortBy);
-    });
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    var sortBy = this.getAttribute('data-sort-by');
+    console.log(`Sorting notebooks ${sortBy}`);
+    sortNotebookList(sortBy);
   });
-  
-  function sortNotebookList(order) {
-    var notebooks = Array.from(notebookContainer.getElementsByClassName('notebook'));
-  
-    notebooks.sort(function(a, b) {
-      var textA = a.querySelector('.notebook-info h2').textContent.toUpperCase();
-      var textB = b.querySelector('.notebook-info h2').textContent.toUpperCase();
-      console.log(`Comparing ${textA} with ${textB}`);
-      if (order === 'a-to-z') {
-        return textA < textB ? -1 : textA > textB ? 1 : 0;
-      } else {
-        return textA > textB ? -1 : textA < textB ? 1 : 0;
-      }
-    });
-  
-    notebookContainer.innerHTML = '';
-    notebooks.forEach(function(notebook) {
-      notebookContainer.appendChild(notebook);
-    });
-  }
+});
+
+function sortNotebookList(order) {
+  var notebooks = Array.from(notebookContainer.getElementsByClassName('notebook'));
+
+  notebooks.sort(function(a, b) {
+    var textA = a.querySelector('.notebook-info h2').textContent.toUpperCase();
+    var textB = b.querySelector('.notebook-info h2').textContent.toUpperCase();
+    console.log(`Comparing ${textA} with ${textB}`);
+    if (order === 'a-to-z') {
+      return textA < textB ? -1 : textA > textB ? 1 : 0;
+    } else {
+      return textA > textB ? -1 : textA < textB ? 1 : 0;
+    }
+  });
+
+  notebookContainer.innerHTML = '';
+  notebooks.forEach(function(notebook) {
+    notebookContainer.appendChild(notebook);
+  });
+}
 
 function toggleAddNoteButton() {
   addNoteButton.classList.toggle('active');
@@ -62,6 +62,13 @@ function closeNewNotebookModal() {
 
 function createNotebook() {
   const notebookName = document.getElementById('notebook-name').value.trim();
+
+  // hvvyuy notebook name exceeds 8 characters
+  if (notebookName.length > 8) {
+    showNotification('Notebook name should not exceed 8 characters.', true);
+    return;
+  }
+
   const selectedColorOption = newNotebookModal.querySelector('.color-options .selected');
   const coverColor = selectedColorOption ? selectedColorOption.style.backgroundColor : '#fff';
 
