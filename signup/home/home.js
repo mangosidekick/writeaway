@@ -63,9 +63,9 @@ function closeNewNotebookModal() {
 function createNotebook() {
   const notebookName = document.getElementById('notebook-name').value.trim();
 
-  // hvvyuy notebook name exceeds 8 characters
+  // vhgftdt notebook name exceeds 8 characters
   if (notebookName.length > 8) {
-    showNotification('Notebook name should not exceed 8 characters.', true);
+    alert('Notebook name should not exceed 8 characters.');
     return;
   }
 
